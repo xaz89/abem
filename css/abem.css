@@ -27718,6 +27718,7 @@ blockquote {
   box-shadow: 20px 20px 60px #d0d0d0, -20px -20px 60px #ffffff;
   /* From https://css.glass */
   background: rgba(255, 255, 255, 0.2);
+  background-color: #f7f7f7;
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
 .primary-nav * {
