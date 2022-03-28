@@ -1,0 +1,465 @@
+
+
+
+@import "./mixins";
+@import "./colors";
+
+*{
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+
+$themes: (
+  arca: (
+    backgroundColor: var(--base1),
+    textColor: var(--white),
+    
+    backgroundColorHover2: darken($base1, 3%),
+    backgroundColorHover1: var(--base2),
+    
+
+    barraDatos: var(--base1),
+    barraDatosText: var(--white),
+    barraBusqueda: var(--bgbusqueda),
+    footer: var(--base1),
+    menu: var(--base1),
+    menuToggler: var(--base2),
+
+    backgroundColorTabs: var(--base2),
+    colorTabs: var(--white),
+
+
+  ),
+  
+  
+);
+
+/*
+   * Implementation of themes
+   */
+@mixin themify($themes) {
+  @each $theme, $map in $themes {
+    .theme-#{$theme} & {
+      $theme-map: () !global;
+      @each $key, $submap in $map {
+        $value: map-get(map-get($themes, $theme), "#{$key}");
+        $theme-map: map-merge(
+          $theme-map,
+          (
+            $key: $value
+          )
+        ) !global;
+      }
+      @content;
+      $theme-map: null !global;
+    }
+  }
+}
+
+@function themed($key) {
+  @return map-get($theme-map, $key);
+}
+
+/*
+ * Actual styles for the app
+ */
+
+
+footer{
+  @include center-flex();
+  @include themify($themes) {
+    background-color: themed("backgroundColor");
+    color: themed("textColor");
+  }
+}
+
+.modal-backdrop{
+  @include themify($themes) {
+    background-color: themed("backgroundColor");
+    
+  }
+  &.show{
+    opacity: 0.65;
+  }
+}
+.nav-tabs {
+  border-bottom: 3px solid;
+  
+  @include themify($themes) {
+    border-bottom-color: themed("backgroundColorTabs");
+  }
+  .nav-link{
+    padding: 15px 30px;
+    color: #646464;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    @include border-radius(0);
+    &:hover{
+      border: none;
+    }
+    &.active{
+      @include themify($themes) {
+        background-color: themed("backgroundColorTabs");
+        color: themed("textColor");
+        border: none;
+      }
+    }
+  }
+}
+
+
+.barra-datos{
+  height: 32px;
+  font-size: 12px;
+  @include center-flex();
+  @include themify($themes) {
+    background-color: themed("barraDatos");
+    a{
+      color: themed("barraDatosText");
+      text-transform: none;
+      text-decoration: none;
+      &:hover{
+        color: themed("menuToggler");
+      }
+      @media (max-width: 480px){
+        span {
+          display: none;
+        }
+      }
+    }
+  }
+}
+.barra-busqueda{
+  height: 80px;
+  padding: 10px;
+  img{
+    max-height: 50px;
+  }
+  @media (max-width: 992px){
+    height: auto;
+    padding: 25px 0;
+  }
+  @include themify($themes) {
+    background-color: themed("barraBusqueda");
+  }
+  [type=search]{
+    background: #F9F9F9;
+border: 1px solid #E1E1E1;
+border-right: none;
+@include border-radius(20px 0 0 20px);
+  }
+  [type=submit]{
+    background: #F40000;
+border-radius: 0px 20px 20px 0px;
+color: white;
+width: 70px;
+height: 40px;
+  }
+}
+.menu{
+  min-height: 48px;
+  box-shadow: 0px 4px 6px #0000001A;
+  z-index: 1020;
+  @include d-flex();
+  @include themify($themes) {
+    background-color: themed("menu");
+  }
+  nav {
+    *{
+      color: #ffffff;
+    }
+  }
+  .categorias{
+    width: 25%;
+    .collapse.show, .collapsing{
+      position: absolute;
+      z-index: 1020;
+      // min-width: 300px;
+      width: 25%;
+      // width: calc(25% - 20px);
+      
+      @include themify($themes) {
+        background-color: themed("menu");
+      }
+    }
+    .nav-item{
+      border-bottom: 1px solid rgba(255,255,255,0.3);
+      width: 100%;
+   
+      a{
+        @include themify($themes) {
+          color: themed("barraDatosText");
+        }
+        &:hover, &.active{
+          @include themify($themes) {
+            background-color: themed("menuToggler");
+          }
+        }
+      }
+      
+    }
+    .nav-link {
+      
+      padding: 10px 20px;
+      @include d-flex();
+      @include justify-content(space-between);
+      span {
+        i {
+          margin-right: 10px;
+        }
+      }
+      &:after{
+
+    content: "\f054";
+    font-family: FontAwesome;
+    display: inline-block;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transform: translate(0, 0);
+      }
+    }
+    .navbar{
+      padding-top: 0;
+      padding-bottom: 0;
+      height:100%;
+    }
+    .navbar-toggler{
+      min-width: 300px;
+      margin-left: 0;
+      text-align: left;
+      border: none;
+      height:100%;
+      box-shadow: none;
+      padding: 0 10px;
+      @include border-radius(0);
+      @include themify($themes) {
+        background-color: themed("barraDatos");
+        color: themed("barraDatosText");
+        &:hover, &.active{
+          background-color: themed("menuToggler");
+        }
+      }
+    }
+
+    @media (max-width: 992px){
+     
+      .collapse.show, .collapsing{
+        width: 35%;
+      }
+      .navbar-toggler{
+        width: auto;
+        min-width: auto;
+      }
+    }
+    @media (max-width: 480px){
+      width: 50%;
+      .collapse.show, .collapsing{
+        width: 75%;
+      }
+      .navbar-toggler{
+        margin-left: 0;
+      }
+    }
+  }
+
+  .secciones{
+    width: 75%;
+    .collapse.show, .collapsing{
+      position: absolute;
+      width: calc(25% - 20px);
+      left: 0;
+      width: 100%;
+      // height:100%;
+      @include themify($themes) {
+        background-color: themed("backgroundColor");
+      }
+    }
+    .navbar-collapse{
+      // height:100%;
+      width: 100%;
+      top: 48px;
+      @include themify($themes) {
+        background-color: themed("backgroundColor");
+      }
+    }
+    .nav-item{
+      width: 100%;
+      min-height:100%;
+      a{
+        @include themify($themes) {
+          color: themed("barraDatosText");
+        }
+        &:hover, &.active{
+          @include themify($themes) {
+            background-color: themed("backgroundColorHover1")
+            // filter: invert(themed("backgroundColorHover"));
+          }
+        }
+      }
+      
+    }
+    .nav-link {
+      padding: 0;
+      @include center-flex();
+      @include justify-content(center);
+      height: 48px;
+      min-height:100%;
+    }
+    .navbar{
+      padding-top: 0;
+      padding-bottom: 0;
+      min-height:100%;
+    }
+    .navbar-toggler{
+      margin-left: 20px;
+      text-align: left;
+      border: none;
+      min-height:100%;
+      box-shadow: none;
+      padding: 0;
+      height: 48px;
+      @include border-radius(0);
+      @include themify($themes) {
+        background-color: themed("base1");
+        color: themed("barraDatosText");
+        &:hover, &.active{
+          background-color: themed("menuToggler");
+        }
+      }
+      
+    }
+    .navbar-nav{
+      min-height: 100%;
+      @include themify($themes) {
+        background-color: themed("base1");
+      }
+    }
+
+    @media (max-width: 992px){
+      
+      .navbar-expand-lg .navbar-toggler {
+        display: none;
+      }
+      .navbar-expand-lg .navbar-nav {
+        flex-direction: row;
+      }
+      .navbar-expand-lg {
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+      }
+      .collapse:not(.show) {
+        display: flex;
+        height: 48px;
+      }
+
+    }
+
+    @media (max-width: 480px){
+      width: 50%;
+      .navbar-expand-lg .navbar-toggler {
+        display: flex;
+      }
+      .navbar-expand-lg .navbar-nav {
+        flex-direction: column;
+      }
+      
+     
+      .collapse:not(.show) {
+        display: none;
+      }
+    }
+    
+
+
+  }
+
+}
+ 
+
+/* nav,
+.btn,
+.dropdown-content li:hover {
+  @include themify($themes) {
+    background-color: themed("sidenavBgColor");
+  }
+} */
+/* 
+.logo {
+  @include themify($themes) {
+    background-color: themed("logoBgColor");
+  }
+}
+
+.sidenav li > a:hover,
+.sidenav li > a.active {
+  @include themify($themes) {
+    background-color: themed("sidenavBgColor");
+  }
+}
+
+.sidenav .collapsible-header:hover {
+  @include themify($themes) {
+    background-color: themed("sidenavBgColor");
+  }
+}
+
+.pulse{
+  @include themify($themes) {
+    background-color: themed("pulseBgColor");
+    color: themed("pulseTextColor");
+  }
+}
+
+.app-root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  > div {
+    display: flex;
+    flex: 1;
+  }
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+ @include themify($themes) {
+    color: themed("textColor");
+    background-color: themed("backgroundColor");
+  }
+
+  .btn- {
+    max-width: 20em;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 15px 32px;
+    display: inline-block;
+    transition: color 0.1s, border-color 0.1s, background-color 0.1s;
+
+    @include themify($themes) {
+      border: themed("buttonBorder");
+      color: themed("buttonTextColor");
+      border-color: themed("buttonBorder");
+      background-color: themed("buttonColor");
+      text-transform: themed("buttonTextTransform");
+
+      &:hover {
+        color: themed("buttonTextHoverColor");
+        border-color: themed("buttonHoverBorderColor");
+        background-color: themed("buttonHoverColor");
+      }
+    }
+  }
+}
+ */

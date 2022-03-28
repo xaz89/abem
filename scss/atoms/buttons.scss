@@ -1,0 +1,100 @@
+ 
+
+
+
+.button {
+    border: none;
+    outline: none;
+    min-width: 160px;
+    height: 38px;
+    @include box-shadow(0px 5px 10px #00000040);
+    @include border-radius(19px);
+    opacity: 1;
+    text-align: center;
+    @include center-flex();
+    cursor: pointer;
+    @include transition(all 0.3s);
+    padding: 0 50px;
+    margin: 10px;
+    color: white;
+    // .slider__item
+
+    $colors: (
+      "primary": $primary,
+      "secondary": $secondary,
+      "three": $three,
+      "four": $four,
+      "five": $five,
+      "six": $six,
+      "seven": $seven,
+      "eight": $eight,
+      );
+
+    @each $name, $color in $colors {
+      &__#{$name} {
+        background-color: $color;
+        @for $i from 1 through 50 {
+          @if $i % 1 == 0 { 
+             $percentage: $i*1%;
+
+
+$incremento: $i + 10%;
+// @debug $result; // 0.5
+             
+             &--darken-#{$i} {
+               background-color: darken($color, $percentage);
+               &:active,
+               &:focus {
+                 @include box-shadow(0px 0px 7px 1px darken($color, $incremento));
+               }
+               &:hover{
+                 background-color: darken($color, $incremento);
+               }
+             }
+             &--lighten-#{$i} {
+               background-color: lighten($color, $percentage);
+               &:active,
+               &:focus {
+                 @include box-shadow(0px 0px 7px 1px lighten($color, $incremento));
+               }
+               &:hover{
+                 background-color: lighten($color, $incremento);
+               }
+             }
+             &--mix-black-#{$i} {
+               background-color: mix(black, $color, $percentage);
+               &:active,
+               &:focus {
+                 @include box-shadow(0px 0px 7px 1px mix(black, $color, $incremento));
+               }
+               &:hover{
+                 background-color: mix(black, $color, $incremento);
+               }
+             }
+             &--mix-white-#{$i} {
+               background-color: mix(white, $color, $percentage);
+               &:active,
+               &:focus {
+                 @include box-shadow(0px 0px 7px 1px mix(white, $color, $incremento));
+               }
+               &:hover{
+                 background-color: mix(white, $color, $incremento);
+               }
+             }
+             
+          }
+         }
+        &:active,
+        &:focus {
+          @include box-shadow(0px 0px 7px 1px lighten($color, 10%));
+        }
+        &:hover{
+          background-color: lighten($color, 10%);
+        }
+         
+        
+      }
+    }
+    
+  }
+

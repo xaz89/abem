@@ -1,0 +1,58 @@
+/* $theme-colors: map-remove($theme-colors, "primary");
+
+
+
+$primary:       $primary !default; */
+
+$theme-colors: (
+    "primary": $primary,
+    "secondary": $secondary,
+    "three": $three,
+    "four": $four,
+    "five": $five,
+    "six": $six,
+    "seven": $seven,
+    "eight": $eight,
+    ) !default;
+
+.color{
+    max-width: 100px;
+    width:100px;
+    height: 100px;
+    @include center-flex();
+    color: #f3f3f3;
+    border: 0.5px solid #f3f3f3;
+    padding: 10px;
+    margin: 2.5px;
+  
+    @each $name, $color in $theme-colors {
+        &__#{$name} {
+          background-color: $color;
+          @for $i from 1 through 100{
+            //@if $i % 1 == 0 { 
+            //    $percentage: $i*1%;
+  
+//   $incremento: $i + 10%;
+  // @debug $result; // 0.5
+               
+               &--mix-black-#{$i} {
+                background-color: mix(black, $color, $i);
+               }
+               &--mix-white-#{$i} {
+                background-color: mix(white, $color, $i);
+               }
+               &--darken-#{$i} {
+                background-color: darken($color, $i);
+               }
+               &--lighten-#{$i} {
+                background-color: lighten($color, $i);
+               }
+              
+               
+            //}
+           }
+          
+          
+        }
+      }
+}

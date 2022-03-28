@@ -1,0 +1,358 @@
+
+   
+    
+    
+    nav {
+        margin: 27px auto;
+        position: relative;
+        width: 80%;
+        height: 50px;
+        background-color: white;
+        border-radius: 1.75rem;
+        font-size: 0;
+        border: 1px solid gray;
+        .start-home {
+           
+        }
+        .animation {
+            border: 5px solid white;
+            position: absolute;
+            width: 0;
+            left: 0;
+            height: 100%;
+            top: 0;
+            z-index: 0;
+            transition: all .5s ease 0s;
+            border-radius: 1.75rem;
+            width: calc((100% / 8));
+            color: black;
+            text-align: center;
+            
+
+    
+        }
+        a {
+            /* margin-top: 10px; */
+            /* line-height: 50px; */
+            height: 100%;
+            font-size: 15px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+            text-decoration: none;
+            text-transform: none;
+            text-align: center;
+            cursor: pointer;
+            font-size: 12px;
+            font-family: sans-serif;
+            width: calc((100% / 8));
+            color: black;
+
+            &.active, &:hover{
+                // color: white;
+                // color: white;
+                transition: all 0.5s; 
+            }
+            
+           
+        
+            
+            &::before{
+                position:absolute;
+                transform:translate(0%, -100%);
+            }
+           
+          
+           /*  &:nth-child(1){
+                &::before{
+                    content: url(../img/iconos/icon_tarjeta.svg);
+                }
+                &+.active{
+                    color: black;
+                    background-color:red;
+                    
+            }
+                &.active, &:hover{
+                    &~.animation{ 
+                        left: calc((100% / 8 * 0));
+                        background-color: #0C5DAC;
+                        color: white!important;
+                        a{
+                            color: white!important;
+                        }
+                       &+.active{
+                            color: black;
+                            background-color:red;
+                            
+                    }
+                        
+                    } 
+                  
+                }
+                
+              
+                
+            } */
+            &:nth-child(1){
+                &::before{
+                    content: url(../img/iconos/icon_tarjeta.svg);
+                }
+                &.active, &:hover{
+                    color: #f1f1f1;
+                    text-shadow: 0 0 4px $primary;
+                    &~.animation{ 
+                        left: calc((100% / 8 * 0));
+                        background-color: $primary;
+                        
+                    } 
+                }
+            }
+            &:nth-child(2){
+                &::before{
+                    content: url(../img/iconos/icon_tarjeta.svg);
+                }
+                &.active, &:hover{
+                    &~.animation{ 
+                        left: calc((100% / 8 * 1));
+                        background-color: $secondary;
+                    } 
+                }
+            }
+            &:nth-child(3){
+                &::before{
+                    content: url(../img/iconos/icon_tarjeta.svg);
+                }
+                &.active, &:hover{
+                    &~.animation{ 
+                        left: calc((100% / 8 * 2));
+                        background-color: $three;
+                    } 
+                }
+            }
+            &:nth-child(4){
+                &::before{
+                    content: url(../img/iconos/icon_tarjeta.svg);
+                }
+                &.active, &:hover{
+                    &~.animation{ 
+                        left: calc((100% / 8 * 3));
+                        background-color: $four;
+                    } 
+                }
+            }
+            &:nth-child(5){
+                &::before{
+                    content: url(../img/iconos/icon_tarjeta.svg);
+                }
+                &.active, &:hover{
+                    &~.animation{ 
+                        left: calc((100% / 8 * 4));
+                        background-color: $five;
+                    } 
+                }
+            }
+            &:nth-child(6){
+                &::before{
+                    content: url(../img/iconos/icon_tarjeta.svg);
+                }
+                &.active, &:hover{
+                    
+                    &~.animation{ 
+                        left: calc((100% / 8 * 5));
+                        background-color: $six;
+                    } 
+                }
+            }
+            &:nth-child(7){
+                &::before{
+                    content: url(../img/iconos/icon_tarjeta.svg);
+                }
+                &.active, &:hover{
+                    
+                    &~.animation{ 
+                        left: calc((100% / 8 * 6));
+                        background-color: $seven;
+                        color: white;
+                    } 
+                }
+            }
+            &:nth-child(8){
+                &::before{
+                    content: url(../img/iconos/icon_tarjeta.svg);
+                }
+                &.active, &:hover{
+                    
+                    &~.animation{ 
+                        left: calc((100% / 8 * 7));
+                        background-color: $eight;
+                        
+                    } 
+                }
+            }
+
+
+
+           
+           
+            /* &.active{
+                &~.animation{
+                    color: red;
+                    
+                }
+                
+            } */
+            
+           
+        }
+        
+       
+
+    }
+
+
+    /* nav a:hover ~ a.active{
+        background-color:red!important;
+        & ~ .animation{
+        color: white!important;
+       }
+    } */
+
+    nav a:hover{
+        color: white;
+    }
+    
+/*     .animation {
+        & > nav a {
+           
+        }
+    } */
+
+
+
+  
+/* 
+
+    a:nth-child(1).active~.animation {
+        left: calc((100% / 8 * 0));
+        background-color: RED;
+       
+    }
+    a:nth-child(2).active~.animation {
+        left: calc((100% / 8 * 1));
+        background-color: #298ACC;
+       
+    }
+    a:nth-child(3).active~.animation  {
+        left: calc((100% / 8 * 2));
+        background-color: #3498db;
+       
+    }
+   
+     a:nth-child(4).active~.animation  {
+        left: calc((100% / 8 * 3));
+        background-color: #9b59b6;
+    }
+    a:nth-child(5).active~.animation  {
+        left: calc((100% / 8 * 4));
+        background-color: #e67e22;
+    }
+    a:nth-child(6).active~.animation  {
+        left: calc((100% / 8 * 5));
+        background-color: #e67e22;
+    }
+    a:nth-child(7).active~.animation  {
+        left: calc((100% / 8 * 6));
+        background-color: #e67e22;
+    }
+     a:nth-child(8).active~.animation  {
+        left: calc((100% / 8 * 7));
+        background-color: #e67e22;
+    }
+
+
+ */
+
+
+    /* 
+    a:nth-child(1):hover~.animation {
+        left: calc((100% / 8 * 0));
+        background-color: #0C5DAC;
+       
+
+    }
+    a:nth-child(2):hover~.animation {
+        left: calc((100% / 8 * 1));
+        background-color: #298ACC;
+        
+    }
+    a:nth-child(3):hover~.animation  {
+        left: calc((100% / 8 * 2));
+        background-color: #3498db;
+       
+    }
+    a:nth-child(4):hover~.animation  {
+        left: calc((100% / 8 * 3));
+        background-color: #9b59b6;
+    }
+    a:nth-child(5):hover~.animation  {
+        left: calc((100% / 8 * 4));
+        background-color: #e67e22;
+    }
+     a:nth-child(6):hover~.animation  {
+        left: calc((100% / 8 * 5));
+        background-color: #036629;
+    }
+    a:nth-child(7):hover~.animation  {
+        left: calc((100% / 8 * 6));
+        background-color: #c9e622;
+    }
+    a:nth-child(8):hover~.animation  {
+        left: calc((100% / 8 * 7));
+        background-color: #22e6c5;
+    }
+
+   
+     */
+    
+    
+  
+    
+   
+
+    
+  /*   nav {
+        a{
+            color: white;
+            &:not(.active){
+                color: blue;
+            }
+            &:hover{
+                color: white;
+            }
+            
+        }
+    } */
+
+
+/* 
+    a:hover~.animation {
+        background-color: #0C5DAC;
+        
+
+    } */
+ 
+/*     a.active~.animation  {
+    
+    left: calc((100% / 8 * 0));
+    background-color: red;
+   
+} */
+
+  
+/* a.active~.animation {
+    background-color: yellow;
+    color: white!important;
+}
+ */

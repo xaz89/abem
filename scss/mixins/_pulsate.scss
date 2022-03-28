@@ -1,0 +1,54 @@
+
+@-webkit-keyframes pulsate {
+  0% {transform: scale(1, 1); opacity: 0.5;}
+  50% {transform: scale(1.2, 1.2); opacity: 1.0;}
+  100% {transform: scale(1, 1); opacity: 0.5;}
+}
+
+.cls-1 {
+  fill: rgba(255,255,255,0);
+  stroke: #707070;
+  fill-rule: evenodd;
+}
+
+svg {
+  
+  transition: transform .15s;
+}
+.corazon{
+  background-color: white;
+}
+
+.corazon:not(.favorite) {
+  i > svg { fill: white; }
+}
+
+.corazon.favorite {
+  i svg .cls-1{ 
+    fill: red;
+    stroke: red;
+  }
+}
+
+.favoriting svg {
+  animation-name: pulsate;
+  animation-duration: 0.55s;
+  animation-iteration-count: infinite;
+}
+
+.corazon {
+  width: auto;
+  border: 0;
+  outline: 0;
+  transition: background .5s;
+}
+
+i {
+  color: #fff;
+  font-size: auto;
+  transition: font-size .2s;
+  svg:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+  }
+}

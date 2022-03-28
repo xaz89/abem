@@ -1,0 +1,49 @@
+.intro {
+    background: var(--base1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999999;
+    text-align: center;
+  }
+  
+  .intro-text {
+    color: rgb(233, 233, 233);
+    font-size: 2rem;
+  }
+  
+  .hide {
+    background: var(--base1);
+    overflow: hidden;
+  }
+  
+  .hide  {
+    
+    span{
+        transform: translateY(-150%);
+        display: inline-block;
+        img {
+          
+            width: 100%;
+            max-width: 50vh;
+        
+        }
+        
+    }
+    &:last-child{
+           
+        span{
+            transform: translateY(150%);
+        }
+   
+}
+    
+  }
+  
+  /* ------- */
+  
