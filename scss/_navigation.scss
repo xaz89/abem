@@ -1,11 +1,25 @@
 // .primary-navegación Principal
 .primary-nav {
   display: flex;
-  width: 85%;
+  width: 100%;
   justify-content: space-around;
   text-decoration: none;
   position: fixed;
     top: 0;
+
+box-shadow:  20px 20px 60px #d0d0d0,
+             -20px -20px 60px #ffffff;
+
+
+
+
+  /* From https://css.glass */
+  background: rgba(255, 255, 255,     0.2);
+
+  border: 1px solid rgba(255, 255, 255, 0.3);
+
+
+
   * {
     text-decoration: none;
     color: white;
@@ -20,7 +34,10 @@
     display: flex;
   }
   .menu {
-    background-color: $seven;
+    // background-color: $seven;
+    // color: rgba(0, 0, 0, 0.5);
+    color: rgb(104, 104, 104);
+    text-transform: uppercase;
     width: 100%;
     text-align: center;
     display: flex;

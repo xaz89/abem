@@ -27710,11 +27710,15 @@ blockquote {
 
 .primary-nav {
   display: flex;
-  width: 85%;
+  width: 100%;
   justify-content: space-around;
   text-decoration: none;
   position: fixed;
   top: 0;
+  box-shadow: 20px 20px 60px #d0d0d0, -20px -20px 60px #ffffff;
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 .primary-nav * {
   text-decoration: none;
@@ -27730,7 +27734,8 @@ blockquote {
   display: flex;
 }
 .primary-nav .menu {
-  background-color: #1DBC9C;
+  color: #686868;
+  text-transform: uppercase;
   width: 100%;
   text-align: center;
   display: flex;
