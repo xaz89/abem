@@ -1,4 +1,4 @@
-$primary: #0C5DAC;
+$primary: red;
 $secondary: #298ACC;
 
 $three: #F39C26;
@@ -6,4 +6,31 @@ $four: #E67D23;
 $five: #E74C3C;
 $six: #9B59B6;
 $seven: #1DBC9C;
+$seven2: #29C3CE;
 $eight: #2ECC71;
+
+$dark: #666666;
+$black: #000000;
+$white: #ffffff;
+
+$button-border-radius: 1.75rem;
+$button-box-shadow: 0px 19px 18px -15px rgb(0 0 0 / 75%);
+$button-padding: 0 50px;
+$button-margin: 10px;
+$button-color: $white;
+
+
+
+$colors: (
+      "primary": $primary,
+      "secondary": $secondary,
+      "three": $three,
+      "four": $four,
+      "five": $five,
+      "six": $six,
+      "seven": $seven,
+      "seven2": $seven2,
+      "eight": $eight,
+      "dark": $dark,
+      "black": $black,
+      );

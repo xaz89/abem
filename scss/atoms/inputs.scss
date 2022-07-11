@@ -1,0 +1,96 @@
+.input {
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid gray;
+
+    @each $name,
+    $color in $colors {
+        &__#{$name} {
+            border-color: $color;
+
+            &:focus,
+            &:focus-visible,
+            &:active {
+                border: 1px solid $color;
+                box-sizing: border-box;
+                border-style: dotted;
+                // border-style: inset;
+                outline: none;
+                transition: all 3s;
+            }
+
+            @for $i from 1 through 50 {
+                @if $i % 1==0 {
+                    $percentage: $i*1%;
+                    $incremento: $i + 5%;
+
+                    &--darken-#{$i} {
+                        border-color: darken($color, $percentage);
+
+                        &:focus,
+                        &:focus-visible,
+                        &:active {
+                            border: 2px solid lighten($color, $incremento);
+                            outline: none;
+                        }
+
+                    }
+
+                    &--lighten-#{$i} {
+                        border-color: lighten($color, $percentage);
+
+                        &:focus,
+                        &:focus-visible,
+                        &:active {
+                            @include box-shadow(0px 0px 7px 1px darken($color, $incremento));
+                            outline: none;
+                        }
+                    }
+
+                    &--mix-black-#{$i} {
+                        border-color: mix(black, $color, $percentage);
+
+                        &:focus,
+                        &:focus-visible,
+                        &:active {
+                            border: 2px solid lighten($color, $incremento);
+                            outline: none;
+                        }
+
+                    }
+
+                    &--mix-white-#{$i} {
+                        border-color: mix(white, $color, $percentage);
+
+                        &:focus,
+                        &:focus-visible,
+                        &:active {
+                            border: 2px solid lighten($color, $incremento);
+                            outline: none;
+                        }
+
+                    }
+
+                }
+            }
+        }
+
+    }
+
+
+
+    &:valid {
+        // box-shadow: 0 0 6px 0 $primary;
+        // border: none;
+    }
+
+    &:invalid {
+        box-shadow: 0 0 6px 0 red;
+    }
+    &:disabled{
+        background-color:#f1f1f1;
+        border-color: #f1f1f1;
+    }
+
+
+}
